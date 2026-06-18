@@ -2,6 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
+import Image from 'next/image'
 import { profile } from '@/lib/data'
 
 function CountUp({ target, suffix, trigger }: { target: number; suffix: string; trigger: boolean }) {
@@ -112,6 +113,30 @@ export default function About() {
               </a>
             </motion.div>
           </div>
+
+          {/* Middle: Profile Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="w-full sm:w-[320px] lg:w-[380px] shrink-0 relative flex justify-center order-first lg:order-none mb-10 lg:mb-0"
+          >
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-[2rem] overflow-hidden border border-white/[0.08] shadow-[0_0_40px_rgba(220,38,38,0.15)] group">
+              <div className="absolute inset-0 bg-[#dc2626]/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
+              <Image
+                src={profile.image}
+                alt={profile.name}
+                fill
+                className="object-cover filter grayscale hover:grayscale-0 transition-all duration-500"
+                sizes="(max-width: 768px) 100vw, 380px"
+              />
+            </div>
+            
+            {/* Decorative brackets */}
+            <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-[#dc2626]/50 rounded-tl-xl pointer-events-none" />
+            <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-[#dc2626]/50 rounded-br-xl pointer-events-none" />
+          </motion.div>
 
           {/* Right: stats */}
           <motion.div

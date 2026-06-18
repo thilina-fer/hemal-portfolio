@@ -6,6 +6,8 @@ export const profile = {
   email: "nipunthemal@gmail.com",
   github: "https://github.com/NipunHemal",
   linkedin: "https://www.linkedin.com/in/nipun-theekshana-hemal/",
+  // TODO: Replace this URL with a path to your real profile picture (e.g., "/profile.jpg")
+  image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=800&auto=format&fit=crop",
   summary:
     "Software Engineer with hands-on freelance and internship experience building and deploying custom web solutions. Scalable backend focus with solid database design and management knowledge across SQL and NoSQL systems. Currently pursuing an HND in Software Engineering. Seeking to contribute as an Associate Software Engineer in a growth-focused engineering team.",
 };

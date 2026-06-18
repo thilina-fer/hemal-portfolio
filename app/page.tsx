@@ -6,7 +6,6 @@ import DatabaseExpertise from '@/components/DatabaseExpertise'
 import Experience from '@/components/Experience'
 import Projects from '@/components/Projects'
 import Education from '@/components/Education'
-import CurrentlyExploring from '@/components/CurrentlyExploring'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 import ScrollProgress from '@/components/ScrollProgress'
@@ -24,7 +23,6 @@ export default function Home() {
       <Experience />
       <Projects />
       <Education />
-      <CurrentlyExploring />
       <Contact />
       <Footer />
       <ScrollToTop />
