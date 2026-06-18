@@ -86,7 +86,11 @@ export default function DatabaseExpertise() {
             <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-[#121212] to-transparent z-10 pointer-events-none" />
             <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#121212] to-transparent z-10 pointer-events-none" />
 
-            <div className="flex flex-col gap-6 animate-marquee-vertical hover:[animation-play-state:paused]">
+            <motion.div 
+              animate={{ y: ["0%", "-50%"] }}
+              transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
+              className="flex flex-col gap-6 hover:[animation-play-state:paused]"
+            >
               {[...databaseExpertise, ...databaseExpertise].map((item, i) => {
                 const Icon = icons[i % icons.length]
                 return (
@@ -111,7 +115,7 @@ export default function DatabaseExpertise() {
                   </motion.div>
                 )
               })}
-            </div>
+            </motion.div>
           </div>
 
         </div>
