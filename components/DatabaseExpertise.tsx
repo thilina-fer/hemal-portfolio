@@ -80,32 +80,38 @@ export default function DatabaseExpertise() {
             </motion.div>
           </div>
 
-          {/* Right Column: Compact List */}
-          <div className="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-8 pt-2">
-            {databaseExpertise.map((item, i) => {
-              const Icon = icons[i % icons.length]
-              return (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.2 + i * 0.08 }}
-                  className="flex gap-4 group"
-                >
-                  <div className="w-10 h-10 shrink-0 rounded-lg flex items-center justify-center bg-white/[0.03] border border-white/[0.08] group-hover:bg-[#dc2626]/10 group-hover:border-[#dc2626]/30 transition-all duration-300">
-                    <Icon size={16} className="text-[#94a3b8] group-hover:text-[#dc2626] transition-colors" />
-                  </div>
-                  <div>
-                    <h3 className="text-white font-bold text-sm mb-1.5 group-hover:text-[#dc2626] transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="text-[#64748b] text-xs leading-relaxed">
-                      {item.detail}
-                    </p>
-                  </div>
-                </motion.div>
-              )
-            })}
+          {/* Right Column: Auto-scrolling Single Column */}
+          <div className="lg:w-2/3 relative h-[380px] overflow-hidden pt-2 group">
+            {/* Top/Bottom Fade Gradients */}
+            <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-[#121212] to-transparent z-10 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#121212] to-transparent z-10 pointer-events-none" />
+
+            <div className="flex flex-col gap-6 animate-marquee-vertical hover:[animation-play-state:paused]">
+              {[...databaseExpertise, ...databaseExpertise].map((item, i) => {
+                const Icon = icons[i % icons.length]
+                return (
+                  <motion.div
+                    key={`${item.title}-${i}`}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.2 + (i % databaseExpertise.length) * 0.08 }}
+                    className="flex gap-4 p-4 rounded-2xl border border-white/[0.04] bg-white/[0.01] hover:bg-white/[0.03] hover:border-[#dc2626]/20 transition-all duration-300"
+                  >
+                    <div className="w-10 h-10 shrink-0 rounded-lg flex items-center justify-center bg-white/[0.03] border border-white/[0.08] group-hover/card:bg-[#dc2626]/10 group-hover/card:border-[#dc2626]/30 transition-all duration-300">
+                      <Icon size={16} className="text-[#94a3b8]" />
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold text-sm mb-1.5 transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-[#64748b] text-xs leading-relaxed">
+                        {item.detail}
+                      </p>
+                    </div>
+                  </motion.div>
+                )
+              })}
+            </div>
           </div>
 
         </div>
